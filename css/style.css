@@ -1,0 +1,123 @@
+/* Clases que se necesitan Agregar  */
+
+/* 
+
+formulario__label
+para colocar de rojo las letras del label
+
+.formulario__input  
+para mostrar el focus sobre el item , colocar en el input,select,textarea
+
+.formulario__input-error
+ motrar texto de error en el item , colocar en el texto de error del input,select,textarea
+
+.formulario__validacion-estado
+icono de validacion 
+
+.formulario__mensaje 
+mensaje de error al enviar
+
+.formulario__mensaje-exito
+mensaje de enviado exitosamente
+
+
+*/
+
+
+
+:root { /* Variables de colores */
+    --fondo: #808080;
+    --fondoFormulario: #fff;
+    --focus: #2fdeef;
+    --mensajeError: #d32b2b;
+    --letrasMensaje: #fff;
+    --mensajeExito: #008000;
+    --letrasBoton: #fff;
+    --colorBoton: #000;
+    --correcto: #008000;
+    --incorrecto: #FF0000;
+}
+
+/* CSS que se puede eliminar para no dañar el de la plantilla usada */
+
+
+
+/* FIN de CSS que se puede eliminar */
+
+.formulario__grupo-input {
+    position: relative;
+}
+
+.formulario__input:focus {
+    border: 3px solid var(--focus);
+    outline: none;
+    box-shadow: 3px 0px 30px rgba(163,163,163, 0.4);
+}
+
+.formulario__input-error {
+    font-size: 12px;
+    margin-bottom: 0;
+    display: none;
+    color: var(--incorrecto);
+}
+
+.formulario__input-error-activo {
+    display: block;
+}
+
+.formulario__validacion-estado {
+    position: absolute;
+    right: 10px;
+    top: 11px;
+    z-index: 100;
+    font-size: 16px;
+    opacity: 0;
+}
+
+.formulario__mensaje {
+    text-align: center;
+    color: var(--letrasMensaje);
+    background: var(--mensajeError);
+    padding: 10px;
+    margin: 10px;
+    border-radius: 3px;
+    display: none;
+}
+
+.formulario__mensaje-activo {
+    display: block;
+}
+
+.formulario__mensaje p {
+    margin: 0;
+}
+
+
+.formulario__mensaje-exito {
+    font-size: 14px;
+    color: var(--mensajeExito);
+    display: none;
+}
+
+.formulario__mensaje-exito-activo {
+    display: block;
+}
+
+/* ----- -----  Estilos para Validacion ----- ----- */
+.formulario__grupo-correcto .formulario__validacion-estado {
+    color: var(--correcto);
+    opacity: 1;
+}
+
+.formulario__grupo-incorrecto .formulario__label {
+    color: var(--incorrecto);
+}
+
+.formulario__grupo-incorrecto .formulario__validacion-estado {
+    color: var(--incorrecto);
+    opacity: 1;
+}
+
+.formulario__grupo-incorrecto .formulario__input {
+    border: 3px solid var(--incorrecto);
+}
