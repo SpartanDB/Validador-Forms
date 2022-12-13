@@ -26,8 +26,6 @@ mensaje de enviado exitosamente
 
 
 :root { /* Variables de colores */
-    --fondo: #808080;
-    --fondoFormulario: #fff;
     --focus: #2fdeef;
     --mensajeError: #d32b2b;
     --letrasMensaje: #fff;
