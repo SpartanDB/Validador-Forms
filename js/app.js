@@ -1,15 +1,3 @@
-// let validarCampos = () => {
-//     let items = {
-//         usuario: {
-//             id: 'usuario',
-//             expresion: 'nombreEspecial',
-//             select: false,
-//         },
-//     };
-
-//     formsValidador('formulario__mensaje', 'btnSubmit', items);
-// };
-
 let validarConfig = {
     items: {
         usuario: {
