@@ -20,93 +20,53 @@
 			<form id="formulario">
 
 				<div class="row row-cols-2 g-2">
+
 					<!-- Grupo: Usuario -->
-					<div class="formulario__grupo" id="validar__usuario">
-						<label for="usuario" class="form-label formulario__label">Usuario</label>
-						<div class=" formulario__grupo-input">
-							<input type="text" class="form-control formulario__input" name="usuario" id="usuario"
-								placeholder="UserName">
-							<i class="formulario__validacion-estado fas fa-times-circle"></i>
+					<div id="validar__usuario">
+						<label for="usuario" class="form-label">Usuario</label>
+						<div>
+							<input type="text" class="form-control" name="usuario" id="usuario" placeholder="UserName">
 						</div>
-						<p class="formulario__input-error">El usuario tiene que ser de 4 a 16 dígitos y solo puede
-							contener
-							numeros, letras y guion bajo.</p>
 					</div>
 
 					<!-- Grupo: Nombre -->
-					<div class="formulario__grupo" id="validar__nombre">
-						<label for="nombre" class="form-label formulario__label">Nombre</label>
-						<div class="formulario__grupo-input">
-							<input type="text" class="form-control formulario__input" name="nombre" id="nombre"
+					<div id="validar__nombre">
+						<label for="nombre" class="form-label">Nombre</label>
+						<div>
+							<input type="text" class="form-control" name="nombre" id="nombre"
 								placeholder="Nombre Apellido">
-							<i class="formulario__validacion-estado fas fa-times-circle"></i>
 						</div>
-						<p class="formulario__input-error">El usuario tiene que ser de 4 a 16 dígitos y solo puede
-							contener
-							numeros, letras y guion bajo.</p>
 					</div>
 
 					<!-- Grupo: Contraseña -->
-					<div class="formulario__grupo" id="validar__password">
-						<label for="password" class="form-label formulario__label">Contraseña</label>
-						<div class="formulario__grupo-input">
-							<input type="password" class="form-control formulario__input" name="password" id="password">
-							<i class="formulario__validacion-estado fas fa-times-circle"></i>
+					<div id="validar__password">
+						<label for="password" class="form-label">Contraseña</label>
+						<div>
+							<input type="password" class="form-control " name="password" id="password">
 						</div>
-						<p class="formulario__input-error">La contraseña tiene que ser de 4 a 12 dígitos.</p>
 					</div>
 
 					<!-- Grupo: Contraseña 2 -->
-					<div class="formulario__grupo" id="validar__password2">
-						<label for="password2" class="form-label formulario__label">Repetir Contraseña</label>
-						<div class="formulario__grupo-input">
-							<input type="password" class="form-control formulario__input" name="password2"
+					<div id="validar__password2">
+						<label for="password2" class="form-label">Repetir Contraseña</label>
+						<div>
+							<input type="password" class="form-control" name="password2"
 								id="password2">
-							<i class="formulario__validacion-estado fas fa-times-circle"></i>
 						</div>
-						<p class="formulario__input-error">Ambas contraseñas deben ser iguales.</p>
-					</div>
-
-					<!-- Grupo: Correo Electronico -->
-					<div class="formulario__grupo" id="validar__correo">
-						<label for="correo" class="form-label formulario__label">Correo Electrónico</label>
-						<div class="formulario__grupo-input">
-							<input type="email" class="form-control formulario__input" name="correo" id="correo"
-								placeholder="correo@correo.com">
-							<i class="formulario__validacion-estado fas fa-times-circle"></i>
-						</div>
-						<p class="formulario__input-error">El correo solo puede contener letras, numeros, puntos,
-							guiones y
-							guion bajo.</p>
-					</div>
-
-					<!-- Grupo: Teléfono -->
-					<div class="formulario__grupo" id="validar__telefono">
-						<label for="telefono" class="form-label formulario__label">Teléfono</label>
-						<div class="formulario__grupo-input">
-							<input type="text" class="form-control formulario__input" name="telefono" id="telefono"
-								placeholder="+4160000000">
-							<i class="formulario__validacion-estado fas fa-times-circle"></i>
-						</div>
-						<p class="formulario__input-error">El telefono solo puede contener numeros y signo más ("+"), el
-							maximo
-							son 15 dígitos.</p>
 					</div>
 
 					<!-- Grupo: Seleccion -->
-					<div class="formulario__grupo col-12" id="validar__seleccion">
-						<label for="seleccion" class="form-label formulario__label">Seleccione</label>
-						<div class="formulario__grupo-input">
-							<select name="seleccion" id="seleccion" class="form-select formulario__input">
+					<div class="col-12" id="validar__seleccion">
+						<label for="seleccion" class="form-label">Seleccione</label>
+						<div>
+							<select name="seleccion" id="seleccion" class="form-select">
 								<option value="" selected disabled>-- Seleccione --</option>
 								<option value="1">Opcion 1</option>
 								<option value="2">Opcion 2</option>
 								<option value="3">Opcion 3</option>
 								<option value="4">Opcion 4</option>
 							</select>
-							<i class="formulario__validacion-estado fas fa-times-circle"></i>
 						</div>
-						<p class="formulario__input-error">Seleccione una de las opciones</p>
 					</div>
 
 
@@ -116,21 +76,19 @@
 				<div class="form-check formulario__grupo formulario__grupo-terminos text-center mt-5"
 					id="validar__terminos">
 
-					<label class="form-check-label formulario__label">
+					<label class="form-check-label">
 						<input class="form-check-input formulario__checkbox" type="checkbox" name="terminos"
 							id="terminos">
 						Acepto los Terminos y Condiciones</label>
 				</div>
 
-				<div class="formulario__mensaje" id="formulario__mensaje">
-					<p><i class="fas fa-exclamation-triangle"></i> <b>Error:</b> Por favor rellena el formulario
+				<div id="formulario__mensaje">
+					<p><i class="fa fa-exclamation-triangle"></i> <b>Error:</b> Por favor rellena el formulario
 						correctamente. </p>
 				</div>
 
 				<div class="">
 					<button type="submit" class="btn btn-success" id="btnSubmit">Enviar</button>
-					<p class="formulario__mensaje-exito" id="formulario__mensaje-exito">Formulario enviado exitosamente!
-					</p>
 				</div>
 			</form>
 		</div>
@@ -140,48 +98,44 @@
 
 				<div class="row row-cols-2 g-2">
 					<!-- Grupo: Usuario -->
-					<div class="formulario__grupo" id="validar__usuario2">
-						<label for="usuario2" class="form-label formulario__label">Usuario</label>
+					<div id="validar__usuario2">
+						<label for="usuario2" class="form-label">Usuario</label>
 						<div class=" formulario__grupo-input">
-							<input type="text" class="form-control formulario__input" name="usuario2" id="usuario2"
+							<input type="text" class="form-control" name="usuario2" id="usuario2"
 								placeholder="UserName">
-							<i class="formulario__validacion-estado fas fa-times-circle"></i>
 						</div>
-						<p class="formulario__input-error">El usuario tiene que ser de 4 a 16 dígitos y solo puede
-							contener
-							numeros, letras y guion bajo.</p>
 					</div>
 
 					<!-- Grupo: Seleccion -->
-					<div class="formulario__grupo" id="validar__seleccion2">
-						<label for="seleccion2" class="form-label formulario__label">Seleccione</label>
-						<div class="formulario__grupo-input">
-							<select name="seleccion2" id="seleccion2" class="form-select formulario__input">
+					<div id="validar__seleccion2">
+						<label for="seleccion2" class="form-label">Seleccione</label>
+						<div>
+							<select name="seleccion2" id="seleccion2" class="form-select">
 								<option value="" selected disabled>-- Seleccione --</option>
 								<option value="1">Opcion 1</option>
 								<option value="2">Opcion 2</option>
 								<option value="3">Opcion 3</option>
 								<option value="4">Opcion 4</option>
 							</select>
-							<i class="formulario__validacion-estado fas fa-times-circle"></i>
 						</div>
-						<p class="formulario__input-error">Seleccione una de las opciones</p>
 					</div>
 
 
 				</div>
 
-				<div class="formulario__mensaje" id="formulario__mensaje2">
+				<div id="formulario__mensaje2">
 					<p><i class="fas fa-exclamation-triangle"></i> <b>Error:</b> Por favor rellena el formulario
 						correctamente. </p>
 				</div>
 
 				<div class="mt-4">
 					<button type="submit" class="btn btn-success" id="btnSubmit2">Enviar</button>
-					<p class="formulario__mensaje-exito" id="formulario__mensaje-exito">Formulario enviado exitosamente!
-					</p>
 				</div>
 			</form>
+		</div>
+
+		<div>
+			<button class="w-100 btn btn-dark" id="boton">Comprobar en consola</button>
 		</div>
 
 	</main>
@@ -194,8 +148,10 @@
 
 	<!-- JS necesario para la validacion -->
 	<script src="js/validadorFroms.js"></script>
+	<!-- <script src="js/vaidadorForms.min.js"></script> -->
 
 	<!-- configuracion de la validacion -->
 	<script src="js/app.js"></script>
 </body>
+
 </html>

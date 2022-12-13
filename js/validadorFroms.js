@@ -18,6 +18,7 @@ let ValidadorForms = class {
         blanco: /^$/, // en blanco
     };
     #campos = {};
+    #idBtnCopia = '';
 
     constructor(configuracion) {
         this.configuracion = configuracion;
@@ -26,11 +27,89 @@ let ValidadorForms = class {
         this.idBoton = configuracion.idBoton;
     }
     // Getter
-    get area() {
-        return this.items;
+    get esValido() {
+        this.#hacerFocus();
+        this.#verificarValidar();
+
+        let comprobar = Object.values(this.#campos);
+
+        if (!comprobar.includes(false)) {
+            this.flag = true;
+            document
+                .querySelectorAll('.formulario__grupo-correcto')
+                .forEach((icono) => {
+                    icono.classList.remove('formulario__grupo-correcto');
+                });
+        } else {
+            this.flag = false;
+            document
+                .getElementById(this.idMensaje)
+                .classList.add('formulario__mensaje-activo');
+            setTimeout(() => {
+                document
+                    .getElementById(this.idMensaje)
+                    .classList.remove('formulario__mensaje-activo');
+            }, 5000);
+        }
+        return this.flag;
     }
 
-    validarCampo(key) {
+    #insertarClaseMensajeError() {
+        let msjNoValido = document.getElementById(`${this.idMensaje}`);
+        msjNoValido.classList.add('formulario__mensaje');
+    }
+
+    #copiarBorrarBoton() {
+        let btnOriginal = document.getElementById(`${this.idBoton}`);
+        // let btnCopia = btnOriginal.cloneNode(true);
+        let btnCopia = document.createElement('input');
+        btnCopia.id = btnOriginal.id + 'copia';
+        btnCopia.classList.value = btnOriginal.classList.value;
+        btnCopia.type = 'button';
+        btnCopia.value = btnOriginal.innerHTML;
+
+        btnOriginal.insertAdjacentElement('beforebegin', btnCopia);
+        btnOriginal.style = 'display: none;';
+        // btnOriginal.setAttribute('disabled', '');
+        this.#idBtnCopia = btnCopia.id;
+    }
+
+    #insertarElementos(key) {
+        /* agregar clases */
+        let label = document.querySelector(`#validar__${key} label`);
+        label.classList.add('formulario__label');
+
+        let div = document.querySelector(`#validar__${key} div`);
+        div.classList.add('formulario__grupo-input');
+
+        let item = document.getElementById(`${key}`);
+        item.classList.add('formulario__input');
+
+        /* Icono de validacion */
+        let icono = document.createElement('i');
+        // creando el atributo class:
+        const iconoClass = document.createAttribute('class');
+        // agregando clases al tributo:
+        iconoClass.value = 'formulario__validacion-estado fa fa-times-circle';
+        icono.setAttributeNode(iconoClass);
+        div.appendChild(icono);
+
+        /* Parrafo de error */
+        let msjError = document.createElement('p');
+        // creando el atributo class:
+        const att = document.createAttribute('class');
+        // agregando clases al tributo:
+        att.value = 'formulario__input-error';
+        msjError.setAttributeNode(att);
+
+        msjError.innerHTML = `${this.items[key].texto}`;
+
+        if (typeof this.items[key].texto !== 'undefined') {
+            document.getElementById(`validar__${key}`).appendChild(msjError);
+        }
+    }
+
+    #validarCampo(key) {
         let expresion = this.#expresiones[this.items[key].expresion];
         let input = document.getElementById(key);
 
@@ -71,17 +150,19 @@ let ValidadorForms = class {
         }
     }
 
-    validarSelects(key) {
+    #validarSelects(key) {
         // funcion para validar select razor
         validarCampo(key);
     }
 
-    validarFormulario(e) {
+    #validarFormulario(e) {
         let key = e.target.id;
-        this.items[key].select ? this.validarSelects(key) : this.validarCampo(key);
+        this.items[key].select
+            ? this.#validarSelects(key)
+            : this.#validarCampo(key);
     }
 
-    hacerFocus() {
+    #hacerFocus() {
         for (const [key, element] of Object.entries(this.items)) {
             document.getElementById(key).focus();
             document.getElementById(key).blur();
@@ -89,29 +170,33 @@ let ValidadorForms = class {
         }
     }
 
-    verificarValidar() {
+    #verificarValidar() {
         for (const [key, element] of Object.entries(this.items)) {
             // document.getElementById(key).focus();
             // document.getElementById(key).blur();
-            this.validarCampo(key);
+            this.#validarCampo(key);
         }
     }
 
     iniciar() {
-        let boton = document.getElementById(this.idBoton);
-
         for (const [key, element] of Object.entries(this.items)) {
             let input = document.getElementById(key);
 
             this.#campos[key] = false;
 
-            input.addEventListener('keyup', this.validarFormulario.bind(this));
-            input.addEventListener('blur', this.validarFormulario.bind(this));
+            this.#insertarElementos(key);
+
+            input.addEventListener('keyup', this.#validarFormulario.bind(this));
+            input.addEventListener('blur', this.#validarFormulario.bind(this));
         }
 
+        this.#insertarClaseMensajeError();
+        this.#copiarBorrarBoton();
+
+        let boton = document.getElementById(this.#idBtnCopia);
         boton.addEventListener('click', (e) => {
-            // this.hacerFocus();
-            this.verificarValidar();
+            this.#hacerFocus();
+            this.#verificarValidar();
 
             let comprobar = Object.values(this.#campos);
 
@@ -122,6 +207,7 @@ let ValidadorForms = class {
                     .forEach((icono) => {
                         icono.classList.remove('formulario__grupo-correcto');
                     });
+                document.getElementById(this.idBoton).click();
             } else {
                 this.flag = false;
                 document
